@@ -1,6 +1,56 @@
 import SwiftUI
 import WebKit
 import ZIPFoundation
+//
+//func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
+//    let fileManager = FileManager.default
+//    let destinationDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("UnzippedContent")
+//    let uniqueSubdirectoryName = sourceURL.deletingPathExtension().lastPathComponent
+//    let uniqueDestinationURL = destinationDirectoryURL.appendingPathComponent(uniqueSubdirectoryName)
+//    
+//    // Paths to the files you want to copy
+//    let pathToCCaptureAll = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("CCapture.all.min.js")
+//    let pathToCCaptureMin = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("CCapture.min.js")
+//    
+//    // Check if the directory already exists
+//    if fileManager.fileExists(atPath: uniqueDestinationURL.path) {
+//        do {
+//            // Attempt to remove the existing directory to avoid the error
+//            try fileManager.removeItem(at: uniqueDestinationURL)
+//        } catch {
+//            print("An error occurred while removing existing directory: \(error)")
+//            completion(nil)
+//            return
+//        }
+//    }
+//    
+//    do {
+//        // Proceed with creating the directory and unzipping
+//        try fileManager.createDirectory(at: uniqueDestinationURL, withIntermediateDirectories: true, attributes: nil)
+//        try fileManager.unzipItem(at: sourceURL, to: uniqueDestinationURL)
+//        
+//        // Copying CCapture.all.min.js and CCapture.min.js to the destination
+//        let destinationPathForCCaptureAll = uniqueDestinationURL.appendingPathComponent("CCapture.all.min.js")
+//        let destinationPathForCCaptureMin = uniqueDestinationURL.appendingPathComponent("CCapture.min.js")
+//        try fileManager.copyItem(at: pathToCCaptureAll, to: destinationPathForCCaptureAll)
+//        try fileManager.copyItem(at: pathToCCaptureMin, to: destinationPathForCCaptureMin)
+//        
+//        let indexPath = uniqueDestinationURL.appendingPathComponent("index.html")
+//        if fileManager.fileExists(atPath: indexPath.path) {
+//            DispatchQueue.main.async {
+//                completion(indexPath) // Successfully unzipped and copied files
+//            }
+//        } else {
+//            print("index.html does not exist at expected location: \(indexPath.path)")
+//            completion(nil)
+//        }
+//    } catch {
+//        print("An error occurred during unzipping or copying files: \(error)")
+//        completion(nil)
+//    }
+//}
+
+
 
 func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
     let fileManager = FileManager.default

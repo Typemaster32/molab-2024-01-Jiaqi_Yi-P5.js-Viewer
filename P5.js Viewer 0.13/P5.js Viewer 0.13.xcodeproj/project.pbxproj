@@ -19,8 +19,11 @@
 		B21448172B83BA34004F684C /* TestSketch1981360 in Resources */ = {isa = PBXBuildFile; fileRef = B21448162B83BA34004F684C /* TestSketch1981360 */; };
 		B21448192B83CAB2004F684C /* FullscreenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21448182B83CAB2004F684C /* FullscreenWebView.swift */; };
 		B214481B2B83D95F004F684C /* WebContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214481A2B83D95F004F684C /* WebContentView.swift */; };
-		B280DFB52B87DEF000C271F5 /* WebViewSnapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B280DFB42B87DEF000C271F5 /* WebViewSnapshotter.swift */; };
+		B280DFB52B87DEF000C271F5 /* Snapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B280DFB42B87DEF000C271F5 /* Snapshotter.swift */; };
 		B2B6AEBB2B89406400102A13 /* DisplayImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6AEBA2B89406400102A13 /* DisplayImage.swift */; };
+		B2B6AEBD2B8E868B00102A13 /* SaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */; };
+		B2B6AEC02B962B3500102A13 /* CCapture.all.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */; };
+		B2B6AEC12B962B3500102A13 /* CCapture.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B2B6AEBF2B962B3500102A13 /* CCapture.min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +39,12 @@
 		B21448182B83CAB2004F684C /* FullscreenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenWebView.swift; sourceTree = "<group>"; };
 		B214481A2B83D95F004F684C /* WebContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentView.swift; sourceTree = "<group>"; };
 		B280DFB32B87B69600C271F5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B280DFB42B87DEF000C271F5 /* WebViewSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewSnapshotter.swift; sourceTree = "<group>"; };
+		B280DFB42B87DEF000C271F5 /* Snapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshotter.swift; sourceTree = "<group>"; };
 		B2B6AEB92B89335D00102A13 /* P5-js-Viewer-0-13-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "P5-js-Viewer-0-13-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B2B6AEBA2B89406400102A13 /* DisplayImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImage.swift; sourceTree = "<group>"; };
+		B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAnimation.swift; sourceTree = "<group>"; };
+		B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = CCapture.all.min.js; sourceTree = "<group>"; };
+		B2B6AEBF2B962B3500102A13 /* CCapture.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = CCapture.min.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				B2B6AEB92B89335D00102A13 /* P5-js-Viewer-0-13-Info.plist */,
+				B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */,
+				B2B6AEBF2B962B3500102A13 /* CCapture.min.js */,
 				B21448162B83BA34004F684C /* TestSketch1981360 */,
 				B21448102B830F60004F684C /* Sketches */,
 				B21447FA2B830E80004F684C /* P5_js_Viewer_0_13App.swift */,
@@ -82,8 +90,9 @@
 				B21448122B83A9EC004F684C /* UnzipAndPrepare.swift */,
 				B21448142B83AFE2004F684C /* WebView.swift */,
 				B214481A2B83D95F004F684C /* WebContentView.swift */,
-				B280DFB42B87DEF000C271F5 /* WebViewSnapshotter.swift */,
+				B280DFB42B87DEF000C271F5 /* Snapshotter.swift */,
 				B21448182B83CAB2004F684C /* FullscreenWebView.swift */,
+				B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */,
 				B21447FE2B830E81004F684C /* Assets.xcassets */,
 				B21448002B830E81004F684C /* Preview Content */,
 			);
@@ -166,7 +175,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B21448022B830E81004F684C /* Preview Assets.xcassets in Resources */,
+				B2B6AEC02B962B3500102A13 /* CCapture.all.min.js in Resources */,
 				B21448112B830F60004F684C /* Sketches in Resources */,
+				B2B6AEC12B962B3500102A13 /* CCapture.min.js in Resources */,
 				B21447FF2B830E81004F684C /* Assets.xcassets in Resources */,
 				B21448172B83BA34004F684C /* TestSketch1981360 in Resources */,
 			);
@@ -181,7 +192,8 @@
 			files = (
 				B21448192B83CAB2004F684C /* FullscreenWebView.swift in Sources */,
 				B214481B2B83D95F004F684C /* WebContentView.swift in Sources */,
-				B280DFB52B87DEF000C271F5 /* WebViewSnapshotter.swift in Sources */,
+				B2B6AEBD2B8E868B00102A13 /* SaveAnimation.swift in Sources */,
+				B280DFB52B87DEF000C271F5 /* Snapshotter.swift in Sources */,
 				B21447FD2B830E80004F684C /* ContentView.swift in Sources */,
 				B21448152B83AFE2004F684C /* WebView.swift in Sources */,
 				B21448132B83A9EC004F684C /* UnzipAndPrepare.swift in Sources */,

@@ -8,17 +8,18 @@ struct WebContentView: View {
     @State private var isPresentingFullScreenView = false
     @State private var unzippedContentURL: URL? = nil
     @State private var webViewSnapshotter: WebViewSnapshotter?
-
+    @State private var showAlert = false
+    @State private var alertMessage = "Currently, importing p5.sound makes the infinite loading problem.(<script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>)"
+    
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text(title).font(.headline)
                 Text("Author: Unknown").font(.subheadline)
                 
                 if let unzippedURL = unzippedContentURL {
                     WebView(url: unzippedURL)
-                        .frame(width: geometry.size.width * 0.95, height: geometry.size.width * 0.95 * (3 / 3)).border(Color.gray, width: 1)
+                        .frame(width: geometry.size.width * 0.95, height: geometry.size.width * 0.95 * (4 / 3)).border(Color.gray, width: 1)
                 } else {
                     Text("Loading...")
                         .onAppear {
@@ -27,19 +28,18 @@ struct WebContentView: View {
                             }
                         }
                 }
-                
                 Button("Open Full Screen") {
                     self.isPresentingFullScreenView = true
                 }
                 .foregroundColor(.blue)
-                .padding()
+                .padding(5)
                 .fullScreenCover(isPresented: $isPresentingFullScreenView) {
                     if let unzippedURL = unzippedContentURL {
                         FullScreenWebView(sourceURL: unzippedURL)
                     }else{Text("Unzipping Failed")}
                 };
                 //Button1: Open Full Screen
-
+                
                 Button("Save Image") {
                     if let unzippedURL = unzippedContentURL {
                         webViewSnapshotter = WebViewSnapshotter(url: unzippedURL) { image in
@@ -54,11 +54,32 @@ struct WebContentView: View {
                         }
                     }
                 }.foregroundColor(.blue)
+                    .padding(5)
                 //Button2: Save Image
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .multilineTextAlignment(.center)
+                
+                Button("Save Live Photo") {
+                    //                    EmptyView()
+                }.foregroundColor(.blue)
+                    .padding(5)
+                //Button3: Save Image
+                
+                Button("More Info") {
+                    self.showAlert = true
+                }.foregroundColor(.gray)
+                    .padding(5)
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Problems to be fixed:"),
+                            message: Text(alertMessage),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
+                //Button3: Save Image
+                
+                //                Spacer()
+            }.navigationBarTitle(Text(title), displayMode: .inline)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //            .multilineTextAlignment(.center)
         }
     }
 }
@@ -97,13 +118,13 @@ struct WebContentView: View {
 //                    // Calculate width and height based on desired aspect ratio and screen width
 //                let webViewWidth = geometry.size.width * 0.95
 //                let webViewHeight = webViewWidth * (4 / 3) // 4:3 aspect ratio
-//                
+//
 //                UnzipAndPrepare(sourceURL: sourceURL)
 //                    .frame(width: webViewWidth, height: webViewHeight)
 //                    .cornerRadius(10) // Optional: Adds rounded corners to the WebView
 //                    .padding(.bottom, 40)
 //                    .border(Color.gray, width: 1)  // Space between the WebView and the footer
-//                
+//
 //                Button(action: {
 //                    self.isPresentingFullScreenView = true
 //                }) {
@@ -115,7 +136,7 @@ struct WebContentView: View {
 //                        // Here you present another instance of WebContentView or a different
 //                        // view designed for full screen. Adjust sourceURL as needed.
 //                    FullScreenWebView(sourceURL: sourceURL)
-//                    
+//
 //                }
 //                Spacer(minLength: 20)
 //            }
