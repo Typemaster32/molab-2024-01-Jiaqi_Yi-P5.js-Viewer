@@ -44,7 +44,7 @@ struct WebContentView: View {
                     if let unzippedURL = unzippedContentURL {
                         webViewSnapshotter = WebViewSnapshotter(url: unzippedURL) { image in
                             if let image = image {
-                                print("Snapshot taken successfully")
+                                print("Snapshot taken successfully from the path below: ")
                                 print(unzippedURL)
                                 ImageSaver.shared.saveImage(image)
                                 self.webViewSnapshotter = nil // Clear the reference once done
@@ -76,7 +76,7 @@ struct WebContentView: View {
                     }
                 //Button3: Save Image
                 
-                //                Spacer()
+                
             }.navigationBarTitle(Text(title), displayMode: .inline)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             //            .multilineTextAlignment(.center)

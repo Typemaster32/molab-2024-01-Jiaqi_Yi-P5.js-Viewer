@@ -14,16 +14,17 @@
 		B214480A2B830EDB004F684C /* Telegraph in Frameworks */ = {isa = PBXBuildFile; productRef = B21448092B830EDB004F684C /* Telegraph */; };
 		B214480D2B830EEB004F684C /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = B214480C2B830EEB004F684C /* ZIPFoundation */; };
 		B21448112B830F60004F684C /* Sketches in Resources */ = {isa = PBXBuildFile; fileRef = B21448102B830F60004F684C /* Sketches */; };
-		B21448132B83A9EC004F684C /* UnzipAndPrepare.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21448122B83A9EC004F684C /* UnzipAndPrepare.swift */; };
+		B21448132B83A9EC004F684C /* Unzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21448122B83A9EC004F684C /* Unzip.swift */; };
 		B21448152B83AFE2004F684C /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21448142B83AFE2004F684C /* WebView.swift */; };
 		B21448172B83BA34004F684C /* TestSketch1981360 in Resources */ = {isa = PBXBuildFile; fileRef = B21448162B83BA34004F684C /* TestSketch1981360 */; };
 		B21448192B83CAB2004F684C /* FullscreenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21448182B83CAB2004F684C /* FullscreenWebView.swift */; };
 		B214481B2B83D95F004F684C /* WebContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214481A2B83D95F004F684C /* WebContentView.swift */; };
-		B280DFB52B87DEF000C271F5 /* Snapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B280DFB42B87DEF000C271F5 /* Snapshotter.swift */; };
+		B280DFB52B87DEF000C271F5 /* SaveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B280DFB42B87DEF000C271F5 /* SaveImage.swift */; };
 		B2B6AEBB2B89406400102A13 /* DisplayImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6AEBA2B89406400102A13 /* DisplayImage.swift */; };
 		B2B6AEBD2B8E868B00102A13 /* SaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */; };
 		B2B6AEC02B962B3500102A13 /* CCapture.all.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */; };
 		B2B6AEC12B962B3500102A13 /* CCapture.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B2B6AEBF2B962B3500102A13 /* CCapture.min.js */; };
+		B2B6AEC32B96719F00102A13 /* CCapture.savecanvas.js in Resources */ = {isa = PBXBuildFile; fileRef = B2B6AEC22B96719F00102A13 /* CCapture.savecanvas.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,18 +34,19 @@
 		B21447FE2B830E81004F684C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B21448012B830E81004F684C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B21448102B830F60004F684C /* Sketches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sketches; sourceTree = "<group>"; };
-		B21448122B83A9EC004F684C /* UnzipAndPrepare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnzipAndPrepare.swift; sourceTree = "<group>"; };
+		B21448122B83A9EC004F684C /* Unzip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unzip.swift; sourceTree = "<group>"; };
 		B21448142B83AFE2004F684C /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B21448162B83BA34004F684C /* TestSketch1981360 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestSketch1981360; sourceTree = "<group>"; };
 		B21448182B83CAB2004F684C /* FullscreenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenWebView.swift; sourceTree = "<group>"; };
 		B214481A2B83D95F004F684C /* WebContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentView.swift; sourceTree = "<group>"; };
 		B280DFB32B87B69600C271F5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B280DFB42B87DEF000C271F5 /* Snapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshotter.swift; sourceTree = "<group>"; };
+		B280DFB42B87DEF000C271F5 /* SaveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImage.swift; sourceTree = "<group>"; };
 		B2B6AEB92B89335D00102A13 /* P5-js-Viewer-0-13-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "P5-js-Viewer-0-13-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B2B6AEBA2B89406400102A13 /* DisplayImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImage.swift; sourceTree = "<group>"; };
 		B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAnimation.swift; sourceTree = "<group>"; };
 		B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = CCapture.all.min.js; sourceTree = "<group>"; };
 		B2B6AEBF2B962B3500102A13 /* CCapture.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = CCapture.min.js; sourceTree = "<group>"; };
+		B2B6AEC22B96719F00102A13 /* CCapture.savecanvas.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = CCapture.savecanvas.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,9 @@
 		B21447EE2B830E80004F684C = {
 			isa = PBXGroup;
 			children = (
+				B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */,
+				B2B6AEBF2B962B3500102A13 /* CCapture.min.js */,
+				B2B6AEC22B96719F00102A13 /* CCapture.savecanvas.js */,
 				B21447F92B830E80004F684C /* P5.js Viewer 0.13 */,
 				B21447F82B830E80004F684C /* Products */,
 			);
@@ -80,17 +85,15 @@
 			isa = PBXGroup;
 			children = (
 				B2B6AEB92B89335D00102A13 /* P5-js-Viewer-0-13-Info.plist */,
-				B2B6AEBE2B962B3500102A13 /* CCapture.all.min.js */,
-				B2B6AEBF2B962B3500102A13 /* CCapture.min.js */,
 				B21448162B83BA34004F684C /* TestSketch1981360 */,
 				B21448102B830F60004F684C /* Sketches */,
 				B21447FA2B830E80004F684C /* P5_js_Viewer_0_13App.swift */,
 				B21447FC2B830E80004F684C /* ContentView.swift */,
 				B2B6AEBA2B89406400102A13 /* DisplayImage.swift */,
-				B21448122B83A9EC004F684C /* UnzipAndPrepare.swift */,
+				B21448122B83A9EC004F684C /* Unzip.swift */,
 				B21448142B83AFE2004F684C /* WebView.swift */,
 				B214481A2B83D95F004F684C /* WebContentView.swift */,
-				B280DFB42B87DEF000C271F5 /* Snapshotter.swift */,
+				B280DFB42B87DEF000C271F5 /* SaveImage.swift */,
 				B21448182B83CAB2004F684C /* FullscreenWebView.swift */,
 				B2B6AEBC2B8E868B00102A13 /* SaveAnimation.swift */,
 				B21447FE2B830E81004F684C /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 				B21448112B830F60004F684C /* Sketches in Resources */,
 				B2B6AEC12B962B3500102A13 /* CCapture.min.js in Resources */,
 				B21447FF2B830E81004F684C /* Assets.xcassets in Resources */,
+				B2B6AEC32B96719F00102A13 /* CCapture.savecanvas.js in Resources */,
 				B21448172B83BA34004F684C /* TestSketch1981360 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,10 +197,10 @@
 				B21448192B83CAB2004F684C /* FullscreenWebView.swift in Sources */,
 				B214481B2B83D95F004F684C /* WebContentView.swift in Sources */,
 				B2B6AEBD2B8E868B00102A13 /* SaveAnimation.swift in Sources */,
-				B280DFB52B87DEF000C271F5 /* Snapshotter.swift in Sources */,
+				B280DFB52B87DEF000C271F5 /* SaveImage.swift in Sources */,
 				B21447FD2B830E80004F684C /* ContentView.swift in Sources */,
 				B21448152B83AFE2004F684C /* WebView.swift in Sources */,
-				B21448132B83A9EC004F684C /* UnzipAndPrepare.swift in Sources */,
+				B21448132B83A9EC004F684C /* Unzip.swift in Sources */,
 				B2B6AEBB2B89406400102A13 /* DisplayImage.swift in Sources */,
 				B21447FB2B830E80004F684C /* P5_js_Viewer_0_13App.swift in Sources */,
 			);
