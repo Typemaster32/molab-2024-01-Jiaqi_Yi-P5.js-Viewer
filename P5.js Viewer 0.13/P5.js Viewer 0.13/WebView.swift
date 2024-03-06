@@ -12,6 +12,8 @@ struct WebView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         setupSnapshotListener() // Setup the listener when the view is created
+        self.webView.isInspectable = true;
+
         return webView
     }
     

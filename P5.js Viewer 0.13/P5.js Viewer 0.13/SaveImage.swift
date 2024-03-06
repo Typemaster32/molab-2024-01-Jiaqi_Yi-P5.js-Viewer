@@ -15,21 +15,7 @@ class WebViewSnapshotter: NSObject, WKNavigationDelegate {
         //        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
         webView = WKWebView()
         webView.frame = CGRect(x: 0, y: 0, width: 500, height: 500)
-//        if let windowScene = UIApplication.shared.connectedScenes
-//            .filter({ $0.activationState == .foregroundActive })
-//            .first as? UIWindowScene,
-//           let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
-//            keyWindow.addSubview(webView)
-//            // webView.alpha = 0 // Optionally, make the webView invisible
-//        }
-//        if let windowScene = UIApplication.shared.connectedScenes
-//            .filter({ $0.activationState == .foregroundActive })
-//            .first as? UIWindowScene,
-//           let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
-//            // Set the webView frame to be off-screen
-//            webView.frame = CGRect(x: -UIScreen.main.bounds.width * 2, y: 0, width: 500, height: 500)
-//            keyWindow.addSubview(webView)
-//        }
+
         if let windowScene = UIApplication.shared.connectedScenes
             .filter({ $0.activationState == .foregroundActive })
             .first as? UIWindowScene,
@@ -51,20 +37,6 @@ class WebViewSnapshotter: NSObject, WKNavigationDelegate {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        
-        //        let request = URLRequest(url: url)
-        //        webView.load(request)
-        print(url)
-        //        if let filePath = Bundle.main.path(forResource: "index", ofType: "html") {
-        //            print("File path found: \(filePath)")
-        //            let fileURL = URL(fileURLWithPath: filePath)
-        //            let request = URLRequest(url: fileURL)
-        //            webView.load(request)
-        //        } else {
-        //            print("Failed to find file path for index.html")
-        //        }
-        
-        
         print("WVSS Initiated")
     }
     
@@ -113,24 +85,6 @@ class WebViewSnapshotter: NSObject, WKNavigationDelegate {
             }
         }
     }
-
-//    private func takeSnapshot(completion: @escaping (UIImage?) -> Void) {
-//        let config = WKSnapshotConfiguration()
-//        // Adjust configuration if necessary (e.g., specifying a specific rect to snapshot)
-//        
-//        webView.takeSnapshot(with: config) { image, error in
-//            if let error = error {
-//                print("Snapshot error: \(error.localizedDescription)")
-//                completion(nil)
-//            } else if let image = image {
-//                print("Snapshot successful")
-//                completion(image)
-//            } else {
-//                print("Snapshot returned nil image")
-//                completion(nil)
-//            }
-//        }
-//    }
 }
 
 
