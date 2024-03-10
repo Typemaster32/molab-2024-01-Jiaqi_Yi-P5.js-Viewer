@@ -3,44 +3,23 @@ import Foundation
 
 struct SearchView: View {
     @State private var searchText = ""
-    @State private var searchPlaceholder = "Name of the Artist"
     @State private var searchHistory: [String] = []
     @State private var sketches: [Sketch] = [] // State to hold fetched sketches
-    @State private var errorMessage: String = ""
-    @State private var showingErrorAlert: Bool = false
-    @State private var currentAuthor: String = ""
-    
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 searchSection
                 // Search field + icon
-                    Text("You can also paste the link of the sketch here")
-                        .font(.system(size: 12, weight: .regular))
-                        .padding(.horizontal)
-                        .foregroundColor(.gray)
-                    
-                
-                HStack{
-                    Text("Search History:")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(.gray)
-                        .padding(.horizontal)
-                        .padding(.vertical, 5)
-                    Spacer()
-                    Button(action: {
-                        self.searchHistory = []
-                    }) {
-                        Text("Clear")
-                            .font(.system(size: 13, weight: .regular))
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                            .padding(.vertical, 5)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                }
+                Text("You can also paste the link of the sketch here")
+                    .font(.system(size: 12, weight: .regular))
+                    .padding(.horizontal)
+                    .foregroundColor(.gray)
+                Text("Search History:")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(.gray)
+                    .padding(.horizontal)
+                    .padding(.vertical, 5)
                 // Instruction texts
                 
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -48,7 +27,7 @@ struct SearchView: View {
                         ForEach(searchHistory, id: \.self) { historyItem in
                             Button(action: {
                                 self.searchText = historyItem
-                                self.searchArtist()
+                                self.search()
                             }) {
                                 Text(historyItem)
                                     .padding(.vertical, 8)
@@ -64,40 +43,13 @@ struct SearchView: View {
                     .padding(.horizontal)
                 }
                 // Section for searching history
-                HStack{
-                    Text("Results:")
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundColor(.gray)
-                        .padding(.horizontal)
-                        .padding(.vertical, 5)
-                    Spacer()
-                    Button(action: {
-                        self.sketches = []
-                        self.searchPlaceholder = "Name of the Artist"
-                    }) {
-                        Text("Refresh")
-                            .font(.system(size: 12, weight: .regular))
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                            .padding(.vertical, 5)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                // Banner of the result page
-                
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(Color.gray)
-                //Divider
-                
                 
                 if !sketches.isEmpty {
                     List(sketches.indices, id: \.self) { index in
-                        NavigationLink(destination: downloadSketchWithURL(urlString: "https://editor.p5js.org/editor/projects/\(sketches[index].id)/zip",author:currentAuthor,title:sketches[index].name)) {
+                        NavigationLink(destination: SketchDetailView(sketch: sketches[index])) {
                             Text("\(index + 1). \(sketches[index].name)")
                         }
-                    }.background(Color.white) // Set the background color of the List
-                        .listStyle(PlainListStyle())
+                    }
                 }
                 // Search Result
                 Spacer()
@@ -105,31 +57,23 @@ struct SearchView: View {
             .padding(.vertical)
             .navigationTitle("Search")
         }
-        .alert(isPresented: $showingErrorAlert) {
-            Alert(title: Text("Error"),
-                  message: Text(errorMessage),
-                  dismissButton: .default(Text("OK")) {
-                // Reset the error message or perform any other dismiss action
-                self.errorMessage = ""
-            })
-        }
     }
     
     private var searchSection: some View {
         HStack {
-            TextField(self.searchPlaceholder, text: $searchText)
+            TextField("Search...", text: $searchText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .disableAutocorrection(true)
                 .border(Color(red: 0.4, green: 0.41, blue: 0.44), width: 1.2)
                 .submitLabel(.search)
                 .onSubmit {
                     print("Search has been submitted")
-                    searchArtist()
+                    search()
                 }
             
             Button(action: {
                 print("Search button has been clicked")
-                searchArtist()
+                search()
             }) {
                 Image(systemName: "magnifyingglass")
                     .imageScale(.large)
@@ -141,13 +85,13 @@ struct SearchView: View {
         .padding(.horizontal)
     }
     
-    func searchArtist() {
+    func search() {
         // Add to the search history if it is not blank and not repeated
         if !searchText.isEmpty && !searchHistory.contains(searchText) {
             searchHistory.insert(searchText, at: 0)
             // Optionally, limit the search history length
-            self.searchPlaceholder = "Name of the Sketch"
-            if searchHistory.count > 5 {
+            
+            if searchHistory.count > 10 {
                 searchHistory.removeLast()
                 print("The last of search history is removed")
             }
@@ -159,25 +103,31 @@ struct SearchView: View {
                 switch result {
                 case .success(let fetchedSketches):
                     self.sketches = fetchedSketches
-                    currentAuthor = searchText
                 case .failure(let error):
                     print("Error fetching sketches: \(error.localizedDescription)")
-                    // Update the state to show the error message to the user
-                    self.errorMessage = "Sorry, it might have been: 1. Invalid artist name of P5.js Web Editor;  2.Internet Problem."
-                    self.showingErrorAlert = true
                 }
             }
         }
-//        searchText = "Sketch of the artist" // Clear the search text
+        searchText = "" // Clear the search text
     }
-    
-    func searchSketch() {
-        // TBD
-    }
-    
 }
 
+struct SketchDetailView: View {
+    let sketch: Sketch
+    
+    var body: some View {
+        VStack {
+            Text(sketch.name)
+            // Add more details as needed
+        }
+        .navigationTitle("Sketch Details")
+    }
+}
 
+// Define your Sketch struct and fetchSketchArray function as previously described
+
+
+// Define a struct that matches the JSON structure
 struct Sketch: Decodable {
     let name: String
     let _id: String
@@ -186,6 +136,7 @@ struct Sketch: Decodable {
     let createdAt: Date
     let updatedAt: Date
 }
+
 struct File: Codable {
     let name: String
     let content: String
@@ -196,16 +147,13 @@ struct File: Codable {
     let createdAt: Date
     let updatedAt: Date
 }
-struct ErrorResponse: Codable {
-    let message: String
-}
 
 func fetchSketchArray(from urlString: String, completion: @escaping (Result<[Sketch], Error>) -> Void) {
     guard let url = URL(string: urlString) else {
         completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
         return
     }
-    //    print(urlString)
+    print(urlString)
     let task = URLSession.shared.dataTask(with: url) { data, response, error in
         if let error = error {
             completion(.failure(error))
@@ -224,31 +172,17 @@ func fetchSketchArray(from urlString: String, completion: @escaping (Result<[Ske
         
         do {
             let decoder = JSONDecoder()
+            // decoder.dateDecodingStrategy = .iso8601 // Or use a custom formatter if necessary
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" // Adjust this format to match your actual date strings
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Adjust if your dates aren't in UTC
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Recommended for fixed-format date strings
+            
+            // Use the custom DateFormatter
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             let items = try decoder.decode([Sketch].self, from: data)
             completion(.success(items))
         } catch {
-            // New logic to check for specific error message starts here
-            do {
-                let decoder = JSONDecoder()
-                let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
-                if errorResponse.message == "User with that username does not exist." {
-                    DispatchQueue.main.async {
-                        completion(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: errorResponse.message])))
-                    }
-                    return
-                }
-            } catch DecodingError.keyNotFound {
-                // Handle the case where the key 'message' is not found, which might indicate a different error structure
-                print("Error response not in expected format or different error")
-            } catch {
-                print("Failed to decode error response")
-            }
-            // Original error handling logic if the specific error message is not detected
             print("Decoding failed with error: \(error)")
             if let decodingError = error as? DecodingError {
                 switch decodingError {
@@ -269,6 +203,10 @@ func fetchSketchArray(from urlString: String, completion: @escaping (Result<[Ske
     task.resume()
 }
 
+
+// Example usage
+//let urlString = "https://yourapi.com/items.json"
+//fetchItems(from: urlString)
 
 
 //struct SearchView_Previews: PreviewProvider {

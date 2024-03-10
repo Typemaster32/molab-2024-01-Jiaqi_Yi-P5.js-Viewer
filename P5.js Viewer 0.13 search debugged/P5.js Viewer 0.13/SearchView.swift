@@ -75,7 +75,7 @@ struct SearchView: View {
                         self.sketches = []
                         self.searchPlaceholder = "Name of the Artist"
                     }) {
-                        Text("Refresh")
+                        Text("Search Another Artist")
                             .font(.system(size: 12, weight: .regular))
                             .foregroundColor(.gray)
                             .padding(.horizontal)
@@ -117,7 +117,7 @@ struct SearchView: View {
     
     private var searchSection: some View {
         HStack {
-            TextField(self.searchPlaceholder, text: $searchText)
+            TextField("Name of the Artist", text: $searchText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .disableAutocorrection(true)
                 .border(Color(red: 0.4, green: 0.41, blue: 0.44), width: 1.2)

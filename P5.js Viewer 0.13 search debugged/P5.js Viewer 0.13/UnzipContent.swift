@@ -45,9 +45,7 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
         // Clean the comments in JS. Call the function with your directory URL
         deleteSpecificFiles(inDirectory: uniqueDestinationURL)
         processJSFiles(inDirectory: uniqueDestinationURL)
-        removeCommentsFromJSFiles(inDirectory: uniqueDestinationURL)
-        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL)
-        insertCssRulesInCssFile(folderPath:uniqueDestinationURL)
+        
         
         
         let indexPath = uniqueDestinationURL.appendingPathComponent("index.html")
@@ -95,58 +93,7 @@ func removeP5SoundScriptTag(fromHtmlFile filePath: URL) {
         print("An error occurred while processing the HTML file: \(error)")
     }
 }
-func insertMetaTagInHtmlFile(folderPath: URL) {
-    print("     ---insertMetaTagInHtmlFile---")
-    let htmlFilePath = folderPath.appendingPathComponent("index.html")
-    do {
-        // 1. Read the HTML file into a String
-        var htmlContent = try String(contentsOf: htmlFilePath, encoding: .utf8)
-        
-        // 2. Check if the meta tag is already present
-        if !htmlContent.contains("name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\"") {
-            // Prepare the meta tag
-            let metaTag = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">"
-            
-            // Insert the meta tag after the <head> tag
-            if let headRange = htmlContent.range(of: "<head>") {
-                htmlContent.insert(contentsOf: metaTag, at: headRange.upperBound)
-                // 3. Write the modified String back to the file
-                try htmlContent.write(to: htmlFilePath, atomically: true, encoding: .utf8)
-                print("Successfully inserted the meta tag into the HTML file.")
-            } else {
-                print("No <head> tag was found in the HTML file.")
-            }
-        } else {
-            print("The meta tag is already present in the HTML file.")
-        }
-    } catch {
-        print("An error occurred while processing the HTML file: \(error)")
-    }
-}
-func insertCssRulesInCssFile(folderPath: URL) {
-    print("     ---insertCssRulesInCssFile---")
-    let cssFilePath = folderPath.appendingPathComponent("style.css")
-    do {
-        // 1. Read the CSS file into a String
-        var cssContent = try String(contentsOf: cssFilePath, encoding: .utf8)
-        
-        // 2. Prepare the CSS rule
-        let cssRule = "canvas { touch-action: none; }"
-        
-        // Check if the CSS rule is already present
-        if !cssContent.contains(cssRule) {
-            // Append the CSS rule
-            cssContent += "\n\(cssRule)"
-            // 3. Write the modified String back to the file
-            try cssContent.write(to: cssFilePath, atomically: true, encoding: .utf8)
-            print("Successfully inserted the CSS rules into the CSS file.")
-        } else {
-            print("The CSS rule is already present in the CSS file.")
-        }
-    } catch {
-        print("An error occurred while processing the CSS file: \(error)")
-    }
-}
+
 func removeCommentsFromJSFiles(inDirectory directoryPath: URL) {
     print("     ---removeCommentsFromJSFiles---")
     let fileManager = FileManager.default
@@ -174,6 +121,7 @@ func removeCommentsFromJSFiles(inDirectory directoryPath: URL) {
         print("An error occurred: \(error)")
     }
 }
+
 func processJSFiles(inDirectory directoryURL: URL) {
     print("     ---processJSFiles---")
     let fileManager = FileManager.default
@@ -197,6 +145,7 @@ func processJSFiles(inDirectory directoryURL: URL) {
         print("Error listing .js files: \(error)")
     }
 }
+
 func searchJSFilesForKeywords(inDirectory directoryURL: URL, keywords: [Any]) -> [Bool] {
     print("     ---searchJSFilesForKeywords---")
     let fileManager = FileManager.default
@@ -234,6 +183,7 @@ func searchJSFilesForKeywords(inDirectory directoryURL: URL, keywords: [Any]) ->
     
     return results
 }
+
 func deleteSpecificFiles(inDirectory directoryURL: URL) {
     print("     ---deleteSpecificFiles---")
     let fileManager = FileManager.default
@@ -253,7 +203,9 @@ func deleteSpecificFiles(inDirectory directoryURL: URL) {
         }
     }
 }
+
 //There are two test functions:
+
 func printZipFileDetails(url: URL) {
     let fileManager = FileManager.default
     do {
@@ -269,6 +221,8 @@ func printZipFileDetails(url: URL) {
         print("Error retrieving file attributes: \(error.localizedDescription)")
     }
 }
+
+
 func printFilesInFolder(url: URL) {
     let fileManager = FileManager.default
     do {
