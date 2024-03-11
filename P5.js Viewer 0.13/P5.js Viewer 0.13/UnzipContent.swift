@@ -10,10 +10,16 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
     print("---unzipContent---")
     print("[unzipContent]sourceURL: \(sourceURL)")
     print("[unzipContent]uniqueDestinationURL: \(uniqueDestinationURL)")
-
+    let tagCCapture:String="""
+    <script src="path/to/CCapture.min.js"></script>
+    <script src="path/to/gif.js"></script>
+    <script src="path/to/webm-writer-0.2.0.js"></script>
+    """
+    let tagBanZooming:String="name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\""
+    
     let keywords:[Any]=[["createCanvas(windowWidth,windowHeight)","resizeCanvas(windowWidth,windowHeight)"],".play()",["mouseX","mouseY","mouseReleased()","mouseHover()","mouseMoved()"],["keyIsPressed","keyPressed"],["createCapture(VIDEO)"]]
     
-
+    
     // Check if the directory already exists (Oringinal)
     if fileManager.fileExists(atPath: uniqueDestinationURL.path) {
         print("uniqueDestinationURL is now OCCUPIED. Trying to remove the exsiting file")
@@ -34,14 +40,15 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
         try fileManager.unzipItem(at: sourceURL, to: uniqueDestinationURL)
         print("Unzipping is successful")
         
-//        print("[unzipContent]ZIP details:")
-//        printZipFileDetails(url:sourceURL)
-//        print("[unzipContent]Unzipped details:")
-//        printFilesInFolder(url:uniqueDestinationURL)
+        //        print("[unzipContent]ZIP details:")
+        //        printZipFileDetails(url:sourceURL)
+        //        print("[unzipContent]Unzipped details:")
+        //        printFilesInFolder(url:uniqueDestinationURL)
         deleteSpecificFiles(inDirectory: uniqueDestinationURL)
         processJSFiles(inDirectory: uniqueDestinationURL)
         removeCommentsFromJSFiles(inDirectory: uniqueDestinationURL)
-//        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL)
+                insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL, tagToImport: tagCCapture)
+        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL, tagToImport: tagCCapture)
         insertCssRulesInCssFile(folderPath:uniqueDestinationURL)
         let remarkBools = searchJSFilesForKeywords(inDirectory: uniqueDestinationURL, keywords: keywords)
         print("This is the keyword results: \(remarkBools)")
@@ -52,7 +59,7 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
         if fileManager.fileExists(atPath: indexPath.path) {
             removeP5SoundScriptTag(fromHtmlFile: indexPath)
             DispatchQueue.main.async {
-//                print(indexPath)
+                //                print(indexPath)
                 completion(indexPath,remarkBools) // Successfully unzipped
             }
         } else {
@@ -91,7 +98,7 @@ func removeP5SoundScriptTag(fromHtmlFile filePath: URL) {
         print("An error occurred while processing the HTML file: \(error)")
     }
 }
-func insertMetaTagInHtmlFile(folderPath: URL) {
+func insertMetaTagInHtmlFile(folderPath: URL, tagToImport: String) {
     print("     ---insertMetaTagInHtmlFile---")
     let htmlFilePath = folderPath.appendingPathComponent("index.html")
     do {
@@ -99,9 +106,9 @@ func insertMetaTagInHtmlFile(folderPath: URL) {
         var htmlContent = try String(contentsOf: htmlFilePath, encoding: .utf8)
         
         // 2. Check if the meta tag is already present
-        if !htmlContent.contains("name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\"") {
+        if !htmlContent.contains(tagToImport) {
             // Prepare the meta tag
-            let metaTag = "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">"
+            let metaTag = tagToImport
             
             // Insert the meta tag after the <head> tag
             if let headRange = htmlContent.range(of: "<head>") {
@@ -196,7 +203,7 @@ func processJSFiles(inDirectory directoryURL: URL) {
             // removeCommentsFromJSFile(fileURL) // You would need to define this function
         }
     } catch {
-//        print("An error occurred while listing .js files: \(error)")
+        //        print("An error occurred while listing .js files: \(error)")
         print("Error listing .js files: \(error)")
     }
 }
