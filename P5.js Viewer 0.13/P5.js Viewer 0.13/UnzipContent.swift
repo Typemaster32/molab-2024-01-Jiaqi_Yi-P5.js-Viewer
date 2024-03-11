@@ -2,10 +2,7 @@ import SwiftUI
 import WebKit
 import ZIPFoundation
 
-
-
-
-func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
+func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
     let fileManager = FileManager.default
     let destinationDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("UnzippedContent")
     let uniqueSubdirectoryName = sourceURL.deletingPathExtension().lastPathComponent
@@ -14,8 +11,7 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
     print("[unzipContent]sourceURL: \(sourceURL)")
     print("[unzipContent]uniqueDestinationURL: \(uniqueDestinationURL)")
 
-//    let keywords:[Any]=[["createCanvas(windowWidth,windowHeight)","resizeCanvas(windowWidth,windowHeight)"],".play()",["mouseX","mouseY","mouseReleased()","mouseHover()","mouseMoved()"],["keyIsPressed","keyPressed"],["createCapture(VIDEO)"]]
-//    let remarks=["Fullscreen","A/V","Mouse","Keyboard","Capturing"]
+    let keywords:[Any]=[["createCanvas(windowWidth,windowHeight)","resizeCanvas(windowWidth,windowHeight)"],".play()",["mouseX","mouseY","mouseReleased()","mouseHover()","mouseMoved()"],["keyIsPressed","keyPressed"],["createCapture(VIDEO)"]]
     
 
     // Check if the directory already exists (Oringinal)
@@ -27,7 +23,7 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
             print("Removing is successful")
         } catch {
             print("An error occurred while removing existing directory: \(error)")
-            completion(nil)
+            completion(nil,[true,true,true,true,true])
             return
         }
     }
@@ -42,13 +38,13 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
 //        printZipFileDetails(url:sourceURL)
 //        print("[unzipContent]Unzipped details:")
 //        printFilesInFolder(url:uniqueDestinationURL)
-        // Clean the comments in JS. Call the function with your directory URL
         deleteSpecificFiles(inDirectory: uniqueDestinationURL)
         processJSFiles(inDirectory: uniqueDestinationURL)
         removeCommentsFromJSFiles(inDirectory: uniqueDestinationURL)
-        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL)
+//        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL)
         insertCssRulesInCssFile(folderPath:uniqueDestinationURL)
-        
+        let remarkBools = searchJSFilesForKeywords(inDirectory: uniqueDestinationURL, keywords: keywords)
+        print("This is the keyword results: \(remarkBools)")
         
         let indexPath = uniqueDestinationURL.appendingPathComponent("index.html")
         //This is the origin of the html file path. This assumes the name of the file to be "index.html"
@@ -57,15 +53,15 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?) -> Void) {
             removeP5SoundScriptTag(fromHtmlFile: indexPath)
             DispatchQueue.main.async {
 //                print(indexPath)
-                completion(indexPath) // Successfully unzipped
+                completion(indexPath,remarkBools) // Successfully unzipped
             }
         } else {
             print("index.html is missing at expected location: \(indexPath.path)")
-            completion(nil)
+            completion(nil,[true,true,true,true,true])
         }
     } catch {
         print("Error unzipping: \(error)")
-        completion(nil)
+        completion(nil,[true,true,true,true,true])
     }
 }
 
@@ -123,20 +119,27 @@ func insertMetaTagInHtmlFile(folderPath: URL) {
         print("An error occurred while processing the HTML file: \(error)")
     }
 }
+// It would cause sketch1981360 being blank!!!
 func insertCssRulesInCssFile(folderPath: URL) {
     print("     ---insertCssRulesInCssFile---")
     let cssFilePath = folderPath.appendingPathComponent("style.css")
+    
+    // Check if the CSS file exists, if not, create an empty one
+    if !FileManager.default.fileExists(atPath: cssFilePath.path) {
+        FileManager.default.createFile(atPath: cssFilePath.path, contents: nil)
+    }
+    
     do {
         // 1. Read the CSS file into a String
         var cssContent = try String(contentsOf: cssFilePath, encoding: .utf8)
         
         // 2. Prepare the CSS rule
-        let cssRule = "canvas { touch-action: none; }"
+        let cssRule = "canvas { touch-action: none; }\n"
         
         // Check if the CSS rule is already present
         if !cssContent.contains(cssRule) {
             // Append the CSS rule
-            cssContent += "\n\(cssRule)"
+            cssContent += cssRule
             // 3. Write the modified String back to the file
             try cssContent.write(to: cssFilePath, atomically: true, encoding: .utf8)
             print("Successfully inserted the CSS rules into the CSS file.")

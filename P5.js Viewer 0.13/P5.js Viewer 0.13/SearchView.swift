@@ -90,7 +90,6 @@ struct SearchView: View {
                     .foregroundColor(Color.gray)
                 //Divider
                 
-                
                 if !sketches.isEmpty {
                     List(sketches.indices, id: \.self) { index in
                         NavigationLink(destination: downloadSketchWithURL(urlString: "https://editor.p5js.org/editor/projects/\(sketches[index].id)/zip",author:currentAuthor,title:sketches[index].name)) {
