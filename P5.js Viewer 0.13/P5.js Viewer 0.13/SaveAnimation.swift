@@ -3,7 +3,6 @@ import WebKit
 import UIKit
 
 func SaveAnimation(folderURL:URL){
-    
 //    let folderName: String = folderURL.lastPathComponent()
     let parentFolderName: String = "SaveAnimationVersion"
     let fileManager = FileManager.default

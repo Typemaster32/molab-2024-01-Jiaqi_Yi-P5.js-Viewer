@@ -10,7 +10,7 @@ struct WebContentView: View {
     @State private var isPresentingFullScreenView = false
     @State private var unzippedContentURL: URL? = nil
     @State private var webViewSnapshotter: WebViewSnapshotter?
-    @State private var saveAnimation: SaveAnimation? // Added for SaveAnimation
+//    @State private var saveAnimation: SaveAnimation? // Added for SaveAnimation
     @State private var showAlert = false
     @State private var remarkBools: [Bool] = [false, false, false, false, false]
     @State private var alertMessage = "Currently, importing p5.sound makes the infinite loading problem.(<script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>)"
@@ -26,13 +26,18 @@ struct WebContentView: View {
         GeometryReader { geometry in
             VStack {
                 // Top-aligned content
-                Text(author)
-//                    .padding(.vertical, 8)
-//                    .padding(.horizontal, 8)
-                    .font(.system(size: 15, weight: .semibold))
-//                    .background(Color.gray.opacity(0.1)) // Light gray background
-                    .foregroundColor(.blue) // Text color
-//                    .cornerRadius(12)
+                HStack(spacing: 0) { // Reduce or remove spacing if needed
+                    Text(author)
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 1) // Reduce padding or remove it completely
+                    
+                    Image(systemName: "arrow.up.forward.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 14)
+                        .foregroundColor(.gray)
+                }
                 
                 HStack {
                     ForEach(Array(zip(remarks.indices, remarks)), id: \.0) { index, remark in
