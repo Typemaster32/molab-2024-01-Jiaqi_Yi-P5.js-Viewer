@@ -10,13 +10,6 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
     print("---unzipContent---")
     print("[unzipContent]sourceURL: \(sourceURL)")
     print("[unzipContent]uniqueDestinationURL: \(uniqueDestinationURL)")
-    let tagCCapture:String="""
-    <script src="path/to/CCapture.min.js"></script>
-    <script src="path/to/gif.js"></script>
-    <script src="path/to/webm-writer-0.2.0.js"></script>
-    """
-    let tagBanZooming:String="name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\""
-    
     let keywords:[Any]=[["createCanvas(windowWidth,windowHeight)","resizeCanvas(windowWidth,windowHeight)"],".play()",["mouseX","mouseY","mouseReleased()","mouseHover()","mouseMoved()"],["keyIsPressed","keyPressed"],["createCapture(VIDEO)"]]
     
     
@@ -47,9 +40,8 @@ func unzipContent(sourceURL: URL, completion: @escaping (URL?,[Bool]) -> Void) {
         deleteSpecificFiles(inDirectory: uniqueDestinationURL)
         processJSFiles(inDirectory: uniqueDestinationURL)
         removeCommentsFromJSFiles(inDirectory: uniqueDestinationURL)
-                insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL, tagToImport: tagCCapture)
-        insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL, tagToImport: tagCCapture)
-        insertCssRulesInCssFile(folderPath:uniqueDestinationURL)
+//      insertMetaTagInHtmlFile(folderPath:uniqueDestinationURL, tagToImport: tagForceResize)
+//      insertCssRulesInCssFile(folderPath:uniqueDestinationURL)
         let remarkBools = searchJSFilesForKeywords(inDirectory: uniqueDestinationURL, keywords: keywords)
         print("This is the keyword results: \(remarkBools)")
         
