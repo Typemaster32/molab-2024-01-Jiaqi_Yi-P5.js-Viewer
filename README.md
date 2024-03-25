@@ -2,7 +2,7 @@
 This is for project "P5.js Viewer" App of my class Mobile App Development Lab.
 
 My Swift Journey:
-Week01~Week02: Hacking with SwiftUI day01~14;
+Week01-Week02: Hacking with SwiftUI day01-14;
 Week03: Had the idea of mobile app of p5.js;
 Week04: Found out that should apply WKWebView;
 Week05: Applied WKWebView and had examples in the app;
