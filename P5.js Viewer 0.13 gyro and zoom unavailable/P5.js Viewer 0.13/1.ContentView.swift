@@ -9,6 +9,11 @@ class FolderContentManager: ObservableObject {
     //@Published means this property is notifying everybody when it changes
     init() {
         loadContent()
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let documentsDirectory = paths.first {
+            print("Root Path:")
+            print(documentsDirectory)
+        }
     }
     
     

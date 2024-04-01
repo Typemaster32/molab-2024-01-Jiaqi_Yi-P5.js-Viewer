@@ -27,9 +27,10 @@
 		B24C885F2BA39F6000574A35 /* collectionlist.json in Resources */ = {isa = PBXBuildFile; fileRef = B24C885E2BA39F6000574A35 /* collectionlist.json */; };
 		B24C88652BA3A4C500574A35 /* 0-1.WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88642BA3A4C500574A35 /* 0-1.WebView.swift */; };
 		B24C88662BA3A4C500574A35 /* 0-3.DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88612BA3A4C500574A35 /* 0-3.DetailView.swift */; };
-		B24C88672BA3A4C500574A35 /* 0-2FullscreenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88622BA3A4C500574A35 /* 0-2FullscreenWebView.swift */; };
-		B24C88682BA3A4C500574A35 /* 0-4WebViewSnapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88632BA3A4C500574A35 /* 0-4WebViewSnapshotter.swift */; };
-		B24C88692BA3A4C500574A35 /* 0-5SaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88602BA3A4C500574A35 /* 0-5SaveAnimation.swift */; };
+		B24C88672BA3A4C500574A35 /* 0-2.FullscreenWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88622BA3A4C500574A35 /* 0-2.FullscreenWebView.swift */; };
+		B24C88682BA3A4C500574A35 /* 0-4.WebViewSnapshotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88632BA3A4C500574A35 /* 0-4.WebViewSnapshotter.swift */; };
+		B24C88692BA3A4C500574A35 /* 0-5.SaveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24C88602BA3A4C500574A35 /* 0-5.SaveAnimation.swift */; };
+		B27346FA2BB6170D0090C623 /* 0-6LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27346F92BB6170D0090C623 /* 0-6LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,11 +51,12 @@
 		B24C88562B9BC7E300574A35 /* 3-1.Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3-1.Collect.swift"; sourceTree = "<group>"; };
 		B24C885A2BA0B42E00574A35 /* gyroscope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gyroscope.swift; sourceTree = "<group>"; };
 		B24C885E2BA39F6000574A35 /* collectionlist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = collectionlist.json; sourceTree = "<group>"; };
-		B24C88602BA3A4C500574A35 /* 0-5SaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-5SaveAnimation.swift"; sourceTree = "<group>"; };
+		B24C88602BA3A4C500574A35 /* 0-5.SaveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-5.SaveAnimation.swift"; sourceTree = "<group>"; };
 		B24C88612BA3A4C500574A35 /* 0-3.DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-3.DetailView.swift"; sourceTree = "<group>"; };
-		B24C88622BA3A4C500574A35 /* 0-2FullscreenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-2FullscreenWebView.swift"; sourceTree = "<group>"; };
-		B24C88632BA3A4C500574A35 /* 0-4WebViewSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-4WebViewSnapshotter.swift"; sourceTree = "<group>"; };
+		B24C88622BA3A4C500574A35 /* 0-2.FullscreenWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-2.FullscreenWebView.swift"; sourceTree = "<group>"; };
+		B24C88632BA3A4C500574A35 /* 0-4.WebViewSnapshotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-4.WebViewSnapshotter.swift"; sourceTree = "<group>"; };
 		B24C88642BA3A4C500574A35 /* 0-1.WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-1.WebView.swift"; sourceTree = "<group>"; };
+		B27346F92BB6170D0090C623 /* 0-6LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "0-6LoadingView.swift"; sourceTree = "<group>"; };
 		B280DFB32B87B69600C271F5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,10 +97,11 @@
 				B21447FA2B830E80004F684C /* P5_js_Viewer_0_13App.swift */,
 				B214481A2B83D95F004F684C /* 0.WebContentView.swift */,
 				B24C88642BA3A4C500574A35 /* 0-1.WebView.swift */,
-				B24C88622BA3A4C500574A35 /* 0-2FullscreenWebView.swift */,
+				B24C88622BA3A4C500574A35 /* 0-2.FullscreenWebView.swift */,
 				B24C88612BA3A4C500574A35 /* 0-3.DetailView.swift */,
-				B24C88632BA3A4C500574A35 /* 0-4WebViewSnapshotter.swift */,
-				B24C88602BA3A4C500574A35 /* 0-5SaveAnimation.swift */,
+				B24C88632BA3A4C500574A35 /* 0-4.WebViewSnapshotter.swift */,
+				B24C88602BA3A4C500574A35 /* 0-5.SaveAnimation.swift */,
+				B27346F92BB6170D0090C623 /* 0-6LoadingView.swift */,
 				B21447FC2B830E80004F684C /* 1.ContentView.swift */,
 				B21448122B83A9EC004F684C /* 1-1.UnzipContent.swift */,
 				B24C884E2B98D55F00574A35 /* 2.SearchView.swift */,
@@ -207,7 +210,8 @@
 			files = (
 				B24C884F2B98D55F00574A35 /* 2.SearchView.swift in Sources */,
 				B24C88572B9BC7E300574A35 /* 3-1.Collect.swift in Sources */,
-				B24C88692BA3A4C500574A35 /* 0-5SaveAnimation.swift in Sources */,
+				B27346FA2BB6170D0090C623 /* 0-6LoadingView.swift in Sources */,
+				B24C88692BA3A4C500574A35 /* 0-5.SaveAnimation.swift in Sources */,
 				B214481B2B83D95F004F684C /* 0.WebContentView.swift in Sources */,
 				B24C88552B9A7B0300574A35 /* 2-1.DownloadSketchWithURL.swift in Sources */,
 				B24C885B2BA0B42E00574A35 /* gyroscope.swift in Sources */,
@@ -215,11 +219,11 @@
 				B21447FD2B830E80004F684C /* 1.ContentView.swift in Sources */,
 				B21448132B83A9EC004F684C /* 1-1.UnzipContent.swift in Sources */,
 				B24C88532B98E52000574A35 /* 4.SettingsView.swift in Sources */,
-				B24C88682BA3A4C500574A35 /* 0-4WebViewSnapshotter.swift in Sources */,
+				B24C88682BA3A4C500574A35 /* 0-4.WebViewSnapshotter.swift in Sources */,
 				B24C88662BA3A4C500574A35 /* 0-3.DetailView.swift in Sources */,
 				B24C88652BA3A4C500574A35 /* 0-1.WebView.swift in Sources */,
 				B24C88152B97A2C600574A35 /* TestScreenshot.swift in Sources */,
-				B24C88672BA3A4C500574A35 /* 0-2FullscreenWebView.swift in Sources */,
+				B24C88672BA3A4C500574A35 /* 0-2.FullscreenWebView.swift in Sources */,
 				B21447FB2B830E80004F684C /* P5_js_Viewer_0_13App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,7 +27,7 @@ struct CollectionsView: View {
                                 }
                             }
                         } else {
-                            // Handle the case where thumbnailURL is nil, perhaps with a placeholder view
+                            // Handle the case where thumbnailURL is nil, perhaps with a placeholder view 
                             VStack {
                                 Image(systemName: "exclamationmark.circle")
                                     .scaledToFit()
@@ -50,7 +50,7 @@ struct CollectionsView: View {
         }
     }
     private func loadCollectionList() {
-        print("[CollectionsView] Checking the existence of Collections")
+        print("---CollectionsView--- Checking the existence of Collections")
         guard let theFolderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Collections") else {
             print("Failed to find Collections folder.")
             return

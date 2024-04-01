@@ -16,6 +16,7 @@ struct WebContentView: View {
     @State private var showAlert = false
     @State private var remarkBools: [Bool] = [false, false, false, false, false]
     @State private var alertMessage = "Currently, importing p5.sound makes the infinite loading problem.(<script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js\"></script>)"
+    @State private var isLoading = false // set it true to call loadingView(), false to stop
     
     let remarks = ["Size Adaptive","A/V","Mouse","Keyboard","Capturing"]
     let remarkIcons = ["arrow.up.left.and.arrow.down.right","exclamationmark.triangle","exclamationmark.triangle","exclamationmark.triangle","exclamationmark.triangle"]
@@ -149,6 +150,9 @@ struct WebContentView: View {
             }
             .navigationBarTitle(Text(title), displayMode: .inline)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            if isLoading {
+                LoadingView()
+            }
         }
     }
     
@@ -173,8 +177,8 @@ struct WebContentView: View {
     }
     
     func startAnimationCaptureAction() {
-        // Your animation capture logic here
+        isLoading = true
+        
     }
-    
     
 }
