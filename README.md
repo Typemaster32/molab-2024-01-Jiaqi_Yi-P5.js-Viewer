@@ -16,4 +16,5 @@ Tasks Ahead:
 1. Save Animation: Using Socket to constantly export data
 2. [Problem]: Causing a lot of heat in opening the sketch(no matter where)
 3. Applying the firebase
-   
+
+[Week08]: Trying to use CCapture for Sketches, but auto download is prohibited in WKWebView. Trying to figure it out as URL Request and am currently looking into the source codes.
