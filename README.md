@@ -25,7 +25,7 @@ Tasks Ahead:
 
 
 
-[Week10]: [Final Proposal]:
+[Week10]: **[Final Proposal]**:
 This is the p5.js mobile viewer that shows, presents and shares sketches from p5.js.
 
 Using the offical API from p5.js web editor, every user can access to sketches that belong to a specific artist, with the name of the author.
@@ -35,3 +35,7 @@ For p5.js artists, it's a place for them to publish their works to more people, 
 For generative art fans, it's a place they can keep track of artists and also get fresh new artworks in the world.
 
 This is an decentralized place. Every user here are equivalent. Enjoy!
+
+**[FeedBack]**:
+1. Think about what makes it different from using website. (Zhiyang)
+2. Example sketches optimized for phones.
