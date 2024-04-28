@@ -10,19 +10,19 @@ class InfiniteScrollViewModel: ObservableObject {
     private let pageSize = 15 // Fetch 3 documents at a time
     
     init() {
-        print("\(blue)[InfiniteScrollViewModel]: init()")
+        print("[InfiniteScrollViewModel][init]")
         loadItems() // Load locally stored items if available
         refreshData() // Fetch new items and update local storage
     }
     
     func refreshData() {
-        print("[InfiniteScrollViewModel][refreshData]: Initiated")
+        print("[InfiniteScrollViewModel][refreshData]")
         fetchData() // Existing fetchData logic, then save new items and download images
 //        saveItems()
     }
     
     func fetchData() {
-        print("[InfiniteScrollViewModel][fetchData]: Initiated fetching data.")
+        print("[InfiniteScrollViewModel][fetchData]")
         guard !isFetching else {
             print("[InfiniteScrollViewModel][fetchData]: Fetch attempt blocked, fetch already in progress.")
             return
@@ -92,7 +92,7 @@ class InfiniteScrollViewModel: ObservableObject {
     }
 
     func downloadImage(for imageName: String) { //
-        print("[InfiniteScrollViewModel][downloadImage]: Initiated.")
+        print("[InfiniteScrollViewModel][downloadImage]")
         guard let localURL = localFileURL(for: imageName), !FileManager.default.fileExists(atPath: localURL.path) else { return }
         
         let imagePath = "previews/\(imageName)"
@@ -126,7 +126,7 @@ class InfiniteScrollViewModel: ObservableObject {
     }
     
     func saveItems() {
-        print("[InfiniteScrollViewModel][saveItems]: Initiated saving items to local storage.")
+        print("[InfiniteScrollViewModel][saveItems]")
         
         let fileManager = FileManager.default
         let fileURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("scrollingViewList.json")
@@ -155,10 +155,10 @@ class InfiniteScrollViewModel: ObservableObject {
                 let data = try Data(contentsOf: fileURL)
                 items = try JSONDecoder().decode([Item].self, from: data)
             } catch {
-                print("Error loading items: \(error)")
+                print("[InfiniteScrollViewModel][loadItems]:Error loading items: \(error)")
             }
         } else {
-            print("Did not found")
+            print("[InfiniteScrollViewModel][loadItems]:Did not found")
         }
     }
 

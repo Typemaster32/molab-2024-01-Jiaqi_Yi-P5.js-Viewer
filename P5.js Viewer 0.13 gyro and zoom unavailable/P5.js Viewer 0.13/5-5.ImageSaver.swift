@@ -5,8 +5,6 @@ import UIKit
 
 class ImageSaver: NSObject { // This is saving the photo, preview and thumbnail
     static let shared = ImageSaver()
-    
-    // Enhanced saveImage method to include a resize option for saving a preview image.
     // Enhanced saveImage method to include a resize option for saving a preview image.
     func saveImage(_ image: UIImage, compress: Bool = false, toURL url: URL? = nil, resizeToWidth width: CGFloat? = nil, completion: ((Bool, Error?) -> Void)? = nil) {
         print("[ImageSaver][saveImage]:Started")
