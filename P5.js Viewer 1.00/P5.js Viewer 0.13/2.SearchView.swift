@@ -15,10 +15,10 @@ struct SearchView: View {
             VStack(alignment: .leading) {
                 searchSection
                 // Search field + icon
-                    Text("You can also paste the link of the sketch here")
-                        .font(.system(size: 12, weight: .regular))
-                        .padding(.horizontal)
-                        .foregroundColor(.gray)
+//                    Text("You can also paste the link of the sketch here")
+//                        .font(.system(size: 12, weight: .regular))
+//                        .padding(.horizontal)
+//                        .foregroundColor(.gray)
                     
                 
                 HStack{
