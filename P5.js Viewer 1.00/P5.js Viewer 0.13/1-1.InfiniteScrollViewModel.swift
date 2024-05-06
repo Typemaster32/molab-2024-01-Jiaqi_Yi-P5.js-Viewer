@@ -7,7 +7,7 @@ class InfiniteScrollViewModel: ObservableObject {
     @Published var items: [Item] = []
     private var lastDocumentSnapshot: DocumentSnapshot?
     var isFetching = false // It was "private" before.
-    private let pageSize = 15 // Fetch 3 documents at a time
+    private let pageSize = 3 // Fetch 3 documents at a time
     
     init() {
         print("[InfiniteScrollViewModel][init]")

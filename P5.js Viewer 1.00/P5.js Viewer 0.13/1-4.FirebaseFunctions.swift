@@ -20,7 +20,7 @@ func addDocument(_ targetItem: Item, completion: @escaping (Item?) -> Void) {
         "updatedAt": localItem.updatedAt,
         "thumbnailURL": localItem.previewName,
         // "sketchURL": localItem.sketchURL.absoluteString
-        "likes": 1
+        "likes": 0
     ]) { err in
         if let err = err {
             print("\(red)[Firebase][addDocument]:Error adding document: \(err)")
