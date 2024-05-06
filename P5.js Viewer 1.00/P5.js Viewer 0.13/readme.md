@@ -1,7 +1,3 @@
 #  <#Title#>
 
-future features and bug fixes:
-
-1. real time updated likes number;
-2. labels indicating canvas size / is moving
-3. correct collection thumbnail saving
+https://docs.google.com/presentation/d/1EwK6S43jWOqxvw5UGrjE_M3jAmH6pg7le1zOVIfBqGM/edit?usp=sharing
